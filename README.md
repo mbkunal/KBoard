@@ -1,7 +1,7 @@
 # KBoard
 Project aims to Secure transactions by using keystroke dynamics as additional factor for transactions. 
 Every person, just like his/her face, has a unique keystroke pattern. Therefore, it can be used to secure the transaction by applying it as an additional security layer.
-project is divided in many tasks:
+project is divided in many tasks. At present, 1st task is done, 8 more to go.
   1) GEt dwell time.
   2) get seek time.
   3) get flight time between all 26 chars in combination of 2.
@@ -11,4 +11,4 @@ project is divided in many tasks:
   7) integration of all modules in one package and testing.
   8) final tests, debugging, and improving ui.
   9) Final Publishing.
-At present, 1st task is done, 8 more to go.
+
