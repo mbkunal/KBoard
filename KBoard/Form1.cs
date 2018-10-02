@@ -18,7 +18,7 @@ namespace KBoard
         int[,] seek = new int[26, 26];
         int b;
         int prekey;
-        Stopwatch sw = new Stopwatch();
+        Stopwatch dw = new Stopwatch();
         Stopwatch sek = new Stopwatch();
         public Form1()
         {
@@ -32,50 +32,66 @@ namespace KBoard
 
         private void InBx_KeyDown(object sender, KeyEventArgs e)
         {
-            sw.Start();
+            dw.Start();
             sek.Stop();
         }
 
         private void InBx_KeyPress(object sender, KeyPressEventArgs e)
         {
-            b = (int)e.KeyChar;
-            seek[prekey, b - 97] = (int)sek.ElapsedMilliseconds;
+
+            try
+            {
+                b = (int)e.KeyChar;
+                seek[prekey, b - 97] = (int)sek.ElapsedMilliseconds;
+            }
+            catch(Exception)
+            {
+
+            }
         }
 
         private void InBx_KeyUp(object sender, KeyEventArgs e)
         {
-            sw.Stop();
-            a[b] = (int)sw.ElapsedMilliseconds;
+            dw.Stop();
+            a[b] = (int)dw.ElapsedMilliseconds;
             Dwell_time.Text = a[b].ToString();
-            sw.Reset();
+            dw.Reset();
             prekey = b - 97;
             sek.Start();
         }
 
         private void Submit_Click(object sender, EventArgs e)
         {
-            TextWriter tsw = new StreamWriter("kmb_dwell.csv", true);
+            TextWriter dwe = new StreamWriter("kmb_dwell.csv", true);
             TextWriter sk = new StreamWriter("kmbseek.csv", true);
             for (int i = 97; i < 123; i++)
             {
-                tsw.Write(a[i]);
-                tsw.Write(",");
+                dwe.Write(a[i]);
+
+                dwe.Write(",");
             }
-            tsw.Write("\n");
+            //dwe.Write("\n");
             for(int i=0;i<26; i++)
             {
                 for(int j=0;j<26;j++)
                 {
-                    sk.Write(seek[i, j]);
-                    if(j!=25)
-                        sk.Write(",");
-                    else
+                    //sk.Write(seek[i, j]);
+                    dwe.Write(seek[i, j]);
+                    dwe.Write(",");
+                    /*if (i == 25 || j == 25)
+                    {
                         sk.Write("\n");
+                    }
+                    else
+                    {
+                        sk.Write(",");
+                    }*/
                 }
             }
+            dwe.Write("\n");
             //Close the file.
             sk.Close();
-            tsw.Close();
+            dwe.Close();
             this.Close();
 
         }
