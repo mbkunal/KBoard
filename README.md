@@ -12,3 +12,4 @@ project is divided in many tasks. At present, 1st task is done, 8 more to go.
   8) final tests, debugging, and improving ui.
   9) Final Publishing.
 
+TO RUN APPLICATION, DOWNLOAD PUBLISH FOLDER AND RUN SETUP.EXE. IT WILL INSTALL APPLICATION AND YOU CAN RUN IT.
